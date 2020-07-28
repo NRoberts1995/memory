@@ -1,11 +1,12 @@
 let score = 0
 let highScore = 0
 let computersChoice = randint (1,10)
+let playersChoice = 0
 let count = 0
 
 input.onButtonPressed(Button.AB, function () {
-    let playersChoice = 0
     basic.showString("Icon you're looking for:")
+
     if (computersChoice == 1){
         basic.showIcon(IconNames.Angry)
     }
@@ -86,60 +87,62 @@ input.onButtonPressed(Button.AB, function () {
             randomIcons = randint(1,10)
         } 
     }  
+})
 
-    input.onButtonPressed(Button.A, function () {
-        playersChoice += 1
-        if (playersChoice == 1){
+input.onButtonPressed(Button.A, function () {
+    playersChoice += 1
+    if (playersChoice == 1){
         basic.showIcon(IconNames.Angry)
-        }
-        else if (playersChoice == 2){
-            basic.showIcon(IconNames.Duck)
-        }
-        else if (playersChoice == 3){
-            basic.showIcon(IconNames.Butterfly)
-        }
-        else if (playersChoice == 3){
-            basic.showIcon(IconNames.SmallHeart)
-        }
-        else if (playersChoice == 4){
-            basic.showIcon(IconNames.Duck)
-        }
-        else if (playersChoice == 5){
-            basic.showIcon(IconNames.Happy)
-        }
-        else if (playersChoice == 6){
-            basic.showIcon(IconNames.Ghost)
-        }
-        else if (playersChoice == 7){
-            basic.showIcon(IconNames.Cow)
-        }
-        else if (playersChoice == 8){
-            basic.showIcon(IconNames.Giraffe)
-        }
-        else if (playersChoice == 9){
-            basic.showIcon(IconNames.Rollerskate)
-        }
-        else {
-            basic.showIcon(IconNames.Umbrella)
-        }
-        if (playersChoice == 11){
-            playersChoice = 1
-        }
-    })
-    input.onButtonPressed(Button.B, function (){
-        if (playersChoice == computersChoice){
-            basic.showString("Correct")
-            score += 1
-            basic.showNumber(score)
-            computersChoice = randint(1,10)
-            count +=1
-        }
-        else{
-            basic.showString("Wrong")
-            computersChoice = randint(1,10)
-            count +=1
-        }
-    })
+    }
+    else if (playersChoice == 2){
+        basic.showIcon(IconNames.Duck)
+    }
+    else if (playersChoice == 3){
+        basic.showIcon(IconNames.Butterfly)
+    }
+    else if (playersChoice == 3){
+        basic.showIcon(IconNames.SmallHeart)
+    }
+    else if (playersChoice == 4){
+        basic.showIcon(IconNames.Duck)
+    }
+    else if (playersChoice == 5){
+        basic.showIcon(IconNames.Happy)
+    }
+    else if (playersChoice == 6){
+        basic.showIcon(IconNames.Ghost)
+    }
+    else if (playersChoice == 7){
+        basic.showIcon(IconNames.Cow)
+    }
+    else if (playersChoice == 8){
+        basic.showIcon(IconNames.Giraffe)
+    }
+    else if (playersChoice == 9){
+        basic.showIcon(IconNames.Rollerskate)
+    }
+    else {
+        basic.showIcon(IconNames.Umbrella)
+    }
+    if (playersChoice == 11){
+        playersChoice = 1
+    }
+})
+
+input.onButtonPressed(Button.B, function (){
+    if (playersChoice == computersChoice){
+        basic.showString("Correct")
+        score += 1
+        basic.showNumber(score)
+        computersChoice = randint(1,10)
+        count +=1
+    }
+    else{
+        basic.showString("Wrong")
+        computersChoice = randint(1,10)
+        count +=1
+    }
+
     if (count == 11){
         basic.showString("Game over")
         basic.showNumber (score)
@@ -148,6 +151,7 @@ input.onButtonPressed(Button.AB, function () {
             basic.showString("New highscore")
             basic.showNumber(highScore)
             score = 0
+            count = 0
         }
     }
 })
